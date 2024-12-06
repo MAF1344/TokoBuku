@@ -63,8 +63,13 @@ def profile_edit(request):
 
 def profile_delete(request):
     user = request.user
+    error_message = None
+
     if request.method == "POST":
-        user.delete()  # Hapus pengguna
-        # Redirect ke halaman login setelah berhasil
-        return redirect('login-page')
-    return render(request, "accounts/profile-delete.html", {'user': user})
+        username = request.POST.get('username')
+        if username == user.username:
+            user.delete()
+            return redirect('login-page')
+        else:
+            error_message = "Username salah. Silakan coba lagi."
+    return render(request, "accounts/profile-delete.html", {'user': user, 'error_message': error_message})

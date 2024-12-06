@@ -24,7 +24,12 @@
     <section id="profile-delete" class="profile-delete">
       <div class="container">
         <h1>Delete Profile</h1>
-        <p>Are you sure you want to delete your profile? Please confirm by entering your username.</p>
+        <p>Are you sure you want to delete '{{ user.username }}' profile? Please confirm by entering your username.</p>
+
+        {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+        {% endif %}
+
         <form method="POST">
           {% csrf_token %}
           <label for="username">Username:</label>
