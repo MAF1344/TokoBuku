@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Delete Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profileDelete.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="profile-delete" class="profile-delete">
+      <div class="container">
+        <h1>Delete Profile</h1>
+        <p>Are you sure you want to delete your profile? Please confirm by entering your username.</p>
+        <form method="POST">
+          {% csrf_token %}
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <button type="submit">Delete Profile</button>
+          <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

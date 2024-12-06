@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <!-- Tambahkan id="navbar" di sini -->
+      <div class="container">
+        <div class="logo">
+          <!-- image logo back to home page -->
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+
+          <!-- text logo back to home page -->
+          <a href="" class="title"> Toko Buku </a>
+        </div>
+
+        <!-- navlist -->
+        <div class="nav-links">
+          <a href="#top" class="scroll-to-top">Home</a>
+          <a href="#about">About</a>
+          <a href="#creator">Creator Profile</a>
+          <a href="#contact">Contact Me</a>
+          <a href="{% url 'book-list' %}">Katalog Buku</a>
+        </div>
+
+        <!-- profile -->
+        <div class="profile">
+          {% if user.is_authenticated %}
+          <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
+          <p>{{ user.username }}</p>
+          {% else %}
+          <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- content -->
+    <!-- {% block content %} {% endblock %} -->
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container">
+        <h1>About</h1>
+        <p>Selamat datang di website <span>Toko Buku</span>, website ini bertujuan untuk menampilkan berbagai macam jenis buku dan dapat melakukan sebuah transaksi jika terdapat buku yang ingin dibeli.</p>
+      </div>
+    </section>
+
+    <!-- Creator Profile -->
+    <section id="creator" class="creator">
+      <div class="container">
+        <h1>Creator Profile</h1>
+        <div class="creator-content">
+          <img src="{% static 'images/fatih.jpg' %}" alt="creator.jpg" />
+          <p>
+            Halo semuanya saya <a href="#contact">Muhammad Al Fatih</a> saya merupakah seorang mahasiswa semester 5 dari <a href="https://nurulfikri.ac.id/">Sekolah Tinggi Teknologi Terpadu Nurul Fikri</a> Depok, saat ini saya sedang
+            menjalankan program MBKM yaitu Studi Independen bersama Mitra saya <a href="https://softuni.id/">SoftUni Indonesia</a>, dan website ini adalah bagian dari hasil belajar saya bersama SoftUni
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Me -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h1>Contact Me</h1>
+        <p>Anda dapat menghubungi saya melalui kontak berikut:</p>
+        <ul>
+          <li>
+            <a href="https://www.instagram.com/fatih_1344/" target="_blank"><i class="fa-brands fa-instagram"></i> fatih_1344</a>
+          </li>
+          <li>
+            <a href="https://github.com/MAF1344" target="_blank"><i class="fa-brands fa-github"></i> MAF1344</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/malfatih/" target="_blank"><i class="fa-brands fa-linkedin"></i> Muhammad Al Fatih</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+
+    <!-- script agar warna navbar berubah saat discroll -->
+    <script>
+      window.onscroll = function () {
+        var navbar = document.getElementById('navbar');
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      };
+    </script>
+    <!-- script agar link navbar mengarahkan ke posisi yang tepat -->
+    <script>
+      // Menambahkan event listener untuk semua link di navbar
+      document.querySelectorAll('.nav-group a').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault(); // Mencegah perilaku default anchor
+
+          const targetId = this.getAttribute('href'); // Mendapatkan ID target
+          const targetElement = document.querySelector(targetId); // Mendapatkan elemen target
+
+          // Jika link adalah "Home", scroll ke atas
+          if (targetId === '#top') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth', // Menambahkan efek smooth scroll
+            });
+          } else {
+            // Menghitung posisi scroll yang tepat
+            const navbarHeight = document.querySelector('.navbar').offsetHeight; // Tinggi navbar
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+            // Menggunakan smooth scroll
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth', // Menambahkan efek smooth scroll
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

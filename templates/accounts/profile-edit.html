@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profileEdit.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="profile-edit" class="profile-edit">
+      <div class="container">
+        <h1>Edit Profile</h1>
+        <form method="POST">
+          {% csrf_token %}
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" value="{{ user.username }}" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="{{ user.email }}" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" value="{{ user.password }}" required />
+
+          <button type="submit">Update Profile</button>
+          <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookDelete.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="book-delete" class="book-delete">
+      <div class="container">
+        <h1>Delete Book</h1>
+        <p>Are you sure you want to delete {{ book.title }}? Please confirm by entering the book title.</p>
+        {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+        {% endif %}
+        <form method="POST">
+          {% csrf_token %}
+          <label for="title">Book Title:</label>
+          <input type="text" id="title" name="title" required />
+          <button type="submit">Delete Book</button>
+          <a href="javascript:history.back()" class="back-button" style="background-color: #6c757d"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transaction List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/transactionList.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+        <div class="nav-links">
+          <a href="{%  url 'home-page' %}">Home</a>
+          <a href="{%  url 'book-list' %}">Katalog Buku</a>
+        </div>
+        <div class="profile">
+          {% if user.is_authenticated %}
+          <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
+          <p>{{ user.username }}</p>
+          {% else %}
+          <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- transaction list(card) -->
+    <section id="transaction-list" class="transaction-list">
+      <div class="container">
+        <h1>Transaction List</h1>
+        <ul>
+          {% for transaction in transactions %}
+          <li>
+            {% if transaction.book %}
+            <p>Buku yang dibeli : <a href="{% url 'book-details' transaction.book.id %}" class="book-title">{{ transaction.book_name }}</a></p>
+            {% else %}
+            <p>Buku yang dibeli : {{ transaction.book_name }} <span style="color: red">(Buku tidak ditemukan!)</span></p>
+            {% endif %}
+            <p>Quantity : {{ transaction.quantity }}</p>
+            <p>Date : {{ transaction.timestamp|date:"d-m-Y H:i:s" }}</p>
+            <a href="{% url 'transaction-details' transaction.id %}" class="details">Details</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

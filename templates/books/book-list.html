@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookList.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <!-- Tambahkan id="navbar" di sini -->
+      <div class="container">
+        <div class="logo">
+          <!-- image logo back to home page -->
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+
+          <!-- text logo back to home page -->
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+
+        <!-- navlist -->
+        <div class="nav-links">
+          <a href="{% url 'home-page' %}">Home</a>
+          {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+          <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
+          {% endif %}
+        </div>
+
+        <!-- profile -->
+        <div class="profile">
+          {% if user.is_authenticated %}
+          <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
+          <p>{{ user.username }}</p>
+          {% else %}
+          <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <section id="book-list" class="book-list">
+      <div class="container">
+        <h1>Book List</h1>
+        <ul>
+          {% for book in books %}
+          <li>
+            <span>
+              <a href="{% url 'book-details' book.id %}" class="book-title">{{ book.title }}</a>
+            </span>
+            <div class="edit-delete">
+              {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+              <a href="{% url 'book-edit' book.id %}" class="edit">Edit</a>
+              <a href="{% url 'book-delete' book.id %}" class="delete">Delete</a>
+              {% endif %}
+              <a href="{% url 'transaction-create' book.id %}" class="buy">Beli</a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'book-create' %}" class="create-book"><i class="fa-solid fa-plus"></i>Create New Book</a>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

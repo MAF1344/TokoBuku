@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookDetail.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <!-- Tambahkan id="navbar" di sini -->
+      <div class="container">
+        <div class="logo">
+          <!-- image logo back to home page -->
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+          </a>
+
+          <!-- text logo back to home page -->
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+
+        <!-- navlist -->
+        <div class="nav-links">
+          <a href="{% url 'home-page' %}">Home</a>
+          <a href="{% url 'book-list' %}">Katalog Buku</a>
+        </div>
+
+        <!-- profile -->
+        <div class="profile">
+          {% if user.is_authenticated %}
+          <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
+          <p>{{ user.username }}</p>
+          {% else %}
+          <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <section id="book-details" class="book-details">
+      <div class="container">
+        <h1>{{ book.title }}</h1>
+        <p>Author: {{ book.author }}</p>
+        <p>Publish year: {{ book.published_year }}</p>
+        <p>Price: {{ formatted_price }}</p>
+        <p>Synopsis: {{ book.synopsis }}</p>
+        <a href="{% url 'book-edit' book.id %}" class="edit">Edit Book</a>
+        <a href="{% url 'book-delete' book.id %}" class="delete">Delete Book</a>
+        <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>
