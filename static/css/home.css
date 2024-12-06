@@ -153,6 +153,11 @@ body {
   text-decoration: none;
 }
 
+.creator-content p a:hover {
+  color: #007bff;
+  text-shadow: 2px 2px 7px rgba(255, 255, 255, 0.5);
+}
+
 .contact .container ul {
   display: flex;
   align-items: center;

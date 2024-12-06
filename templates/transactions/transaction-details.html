@@ -37,9 +37,9 @@
       <div class="container">
         <h1>Transaction Details</h1>
         <p>Transaction ID: {{ transaction.id }}</p>
+        <p>Pembeli: {{ transaction.user.username }}</p>
         <p>Book: <a href="{% url 'book-details' transaction.book.id %}" class="book-title">{{ transaction.book_name }}</a></p>
         <p>Total Price: {{ formatted_total_price }}</p>
-        <!-- Gunakan formatted_total_price -->
         <p>Quantity: {{ transaction.quantity }}</p>
         <p>Date: {{ transaction.timestamp|date:"d-m-Y H:i:s" }}</p>
         <a href="{% url 'transaction-delete' transaction.id %}" class="delete">Delete Transaction</a>

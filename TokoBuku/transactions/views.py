@@ -1,19 +1,18 @@
-# TokoBuku/transactions/views.py
-
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from TokoBuku.books.models import Book
 from .models import Transaction
-from django.shortcuts import render, get_object_or_404, redirect
 from .forms import TransactionForm
-# Impor decorator untuk login
-from django.contrib.auth.decorators import login_required
 
 
 def format_currency(value):
+    """Format currency to Indonesian Rupiah."""
     return f"Rp. {value:,.0f}".replace(',', '.') + ',-'
 
 
 @login_required
 def create_transaction(request, book_id):
+    """Create a new transaction for a specific book."""
     book = get_object_or_404(Book, id=book_id)
 
     if request.method == 'POST':
@@ -21,37 +20,32 @@ def create_transaction(request, book_id):
         if form.is_valid():
             transaction = form.save(commit=False)
             transaction.user = request.user
-            transaction.book = book  # Menyimpan objek Book
+            transaction.book = book
             transaction.book_name = book.title
             transaction.price = book.price
             transaction.save()
             return redirect('transaction-list')
     else:
-        form = TransactionForm({
+        form = TransactionForm(initial={
             'book_name': book.title,
-            'price': book.price,
+            'price': format_currency(book.price),  # Format price for display
         })
-
-    formatted_price = format_currency(book.price)
 
     return render(request, 'transactions/transaction-create.html', {
         'form': form,
         'book': book,
-        'formatted_price': formatted_price
     })
 
 
 def transaction_list(request):
-    transactions = Transaction.objects.select_related(
-        'book').all()  # Mengambil transaksi dengan relasi book
+    """List all transactions."""
+    transactions = Transaction.objects.select_related('book').all()
     return render(request, "transactions/transaction-list.html", {'transactions': transactions})
 
 
 def transaction_details(request, transaction_id):
-    # Mengambil transaksi berdasarkan ID
+    """Display details of a specific transaction."""
     transaction = get_object_or_404(Transaction, id=transaction_id)
-
-    # Hitung total harga
     total_price = transaction.price * transaction.quantity
     formatted_total_price = format_currency(total_price)
 
@@ -62,10 +56,9 @@ def transaction_details(request, transaction_id):
 
 
 def transaction_delete(request, transaction_id):
-    # Mengambil transaksi berdasarkan ID
+    """Delete a specific transaction."""
     transaction = get_object_or_404(Transaction, id=transaction_id)
     if request.method == "POST":
-        transaction.delete()  # Menghapus transaksi
-        # Redirect ke daftar transaksi setelah berhasil
+        transaction.delete()
         return redirect('transaction-list')
     return render(request, "transactions/transaction-delete.html", {'transaction': transaction})
