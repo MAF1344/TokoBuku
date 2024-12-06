@@ -1,4 +1,4 @@
 To run this program on your device : 
-run 'pip install -r requirements.txt'
-config your DATABASES on settings.py
-and then run program 'python manage.py runserver'
+1. run 'pip install -r requirements.txt'
+2. config your DATABASES on settings.py
+3. and then run program 'python manage.py runserver'
