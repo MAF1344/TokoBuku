@@ -141,6 +141,10 @@ body {
   text-align: center;
 }
 
+.book-details .delete {
+  background-color: #dc3545;
+}
+
 .back-button {
   display: inline-block;
   width: 100%;
@@ -158,6 +162,10 @@ body {
 
 .book-details a:hover {
   background-color: #0056b3;
+}
+
+.book-details .delete:hover {
+  background-color: #c82333;
 }
 
 .back-button:hover {

@@ -5,10 +5,10 @@ from .models import Transaction
 class TransactionForm(forms.ModelForm):
     """Form for creating or updating a transaction."""
     quantity = forms.IntegerField(label='Quantity', min_value=1)
-    book_name = forms.CharField(label='Book Name', max_length=255, widget=forms.TextInput(
-        attrs={'readonly': 'readonly'}))
+    book_name = forms.CharField(
+        label='Book Name', max_length=255, widget=forms.HiddenInput())
     price = forms.CharField(label='Price', max_length=255,
-                            widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+                            widget=forms.HiddenInput())
 
     class Meta:
         model = Transaction

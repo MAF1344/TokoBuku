@@ -28,7 +28,7 @@ def create_transaction(request, book_id):
     else:
         form = TransactionForm(initial={
             'book_name': book.title,
-            'price': format_currency(book.price),  # Format price for display
+            'price': book.price,  # Format price for display
         })
 
     return render(request, 'transactions/transaction-create.html', {
@@ -37,12 +37,28 @@ def create_transaction(request, book_id):
     })
 
 
+@login_required
 def transaction_list(request):
-    """List all transactions."""
-    transactions = Transaction.objects.select_related('book').all()
+    """List all transactions for the authenticated user or all transactions for admin."""
+    # Cek apakah pengguna terautentikasi
+    if request.user.is_authenticated:
+        # Cek apakah nama pengguna adalah 'admin' (dalam berbagai format)
+        if request.user.username.lower() == 'admin':
+            # Jika pengguna adalah admin, ambil semua transaksi
+            transactions = Transaction.objects.select_related('book').all()
+        else:
+            # Jika bukan admin, ambil transaksi yang hanya dimiliki oleh pengguna yang sedang login
+            transactions = Transaction.objects.select_related(
+                'book').filter(user=request.user)
+    else:
+        # Jika pengguna tidak terautentikasi, tidak ada transaksi yang ditampilkan
+        transactions = []
+
+    # Render template dengan daftar transaksi
     return render(request, "transactions/transaction-list.html", {'transactions': transactions})
 
 
+@login_required
 def transaction_details(request, transaction_id):
     """Display details of a specific transaction."""
     transaction = get_object_or_404(Transaction, id=transaction_id)
@@ -55,6 +71,7 @@ def transaction_details(request, transaction_id):
     })
 
 
+@login_required
 def transaction_delete(request, transaction_id):
     """Delete a specific transaction."""
     transaction = get_object_or_404(Transaction, id=transaction_id)

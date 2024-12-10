@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Book
-from .forms import BookForm  # Pastikan Anda mengimpor form yang benar
+from .forms import BookForm
 
 
 # Daftar buku
+@login_required
 def book_list(request):
     books = Book.objects.all()  # Mengambil semua buku dari database
     return render(request, "books/book-list.html", {'books': books})
@@ -11,9 +13,10 @@ def book_list(request):
 
 def format_currency(value):
     return f"Rp. {value:,.0f}".replace(',', '.') + ',-'
+
+
 # Detail buku
-
-
+@login_required
 def book_details(request, id):
     book = get_object_or_404(Book, id=id)
     formatted_price = format_currency(book.price)  # Format harga
@@ -21,6 +24,7 @@ def book_details(request, id):
 
 
 # Membuat buku baru
+@login_required
 def book_create(request):
     if request.method == "POST":
         form = BookForm(request.POST)  # Mengambil data dari form
@@ -34,6 +38,7 @@ def book_create(request):
 
 
 # Edit buku
+@login_required
 def book_edit(request, id):
     book = get_object_or_404(Book, id=id)  # Mengambil buku berdasarkan ID
     if request.method == "POST":
@@ -50,6 +55,7 @@ def book_edit(request, id):
 
 
 # Hapus buku
+@login_required
 def book_delete(request, id):
     book = get_object_or_404(Book, id=id)
 

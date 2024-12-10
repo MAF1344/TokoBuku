@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load custom_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +7,14 @@
     <title>Create Transaction</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/transactionCreate.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
   <body>
     <nav class="navbar" id="navbar">
       <div class="container">
         <div class="logo">
           <a href="{% url 'home-page' %}">
-            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+            <img src="{% static 'images/logo.png' %}" alt="logo" />
           </a>
           <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
         </div>
@@ -24,13 +25,56 @@
       <div class="container">
         <h1>Beli Buku</h1>
         <form method="POST">
-          {% csrf_token %} {{ form.as_p }}
+          {% csrf_token %}
+          <p>Book Title:</p>
+          <p class="book-title">{{ form.book_name.value }}</p>
+          <p>Price:</p>
+          <p class="price">{{ form.price.value|formatted_price }}</p>
+          {{ form.as_p }}
           <button type="submit">Beli</button>
           <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
         </form>
       </div>
     </section>
 
+    <div id="confirmation-popup" class="popup" style="display: none">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Konfirmasi Pembelian</h2>
+        <p id="total-price"></p>
+        <p>Apakah Anda yakin ingin membeli buku ini?</p>
+        <button id="confirm-button">Ya, Beli</button>
+        <button onclick="closePopup()" class="cancel-button">Batal</button>
+      </div>
+    </div>
+
     <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+
+    <!-- script pop-up pembelian -->
+    <script>
+      document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Mencegah form disubmit
+
+        // Ambil nilai quantity dan price
+        const quantity = parseInt(document.querySelector('input[name="quantity"]').value);
+        const price = parseFloat(document.querySelector('input[name="price"]').value);
+        const totalPrice = quantity * price;
+
+        // Tampilkan total harga di pop-up
+        document.getElementById('total-price').innerText = `Total Harga: Rp. ${totalPrice.toLocaleString('id-ID', {minimumFractionDigits: 0})},-`;
+
+        // Tampilkan pop-up
+        document.getElementById('confirmation-popup').style.display = 'flex';
+      });
+
+      document.getElementById('confirm-button').addEventListener('click', function () {
+        // Jika pengguna mengkonfirmasi, submit form
+        document.querySelector('form').submit();
+      });
+
+      function closePopup() {
+        document.getElementById('confirmation-popup').style.display = 'none';
+      }
+    </script>
   </body>
 </html>

@@ -7,6 +7,7 @@
     <title>Profile Details</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/profileDetails.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
   <body>
     <!-- navbar -->
@@ -14,13 +15,14 @@
       <div class="container">
         <div class="logo">
           <a href="{% url 'home-page' %}">
-            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+            <img src="{% static 'images/logo.png' %}" alt="logo" />
           </a>
           <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
         </div>
         <div class="nav-links">
           <a href="{% url 'home-page' %}">Home</a>
           <a href="{% url 'book-list' %}">Katalog Buku</a>
+          <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
         </div>
         <div class="profile">
           {% if user.is_authenticated %}

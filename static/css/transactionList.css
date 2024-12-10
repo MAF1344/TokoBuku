@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -20,6 +21,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -102,6 +106,7 @@ body {
 .transaction-list {
   padding: 2rem 0;
   margin: 2rem auto;
+  flex: 1;
 }
 
 .transaction-list .container {

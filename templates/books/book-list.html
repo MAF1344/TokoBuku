@@ -7,6 +7,7 @@
     <title>Toko Buku</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bookList.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
   <body>
     <!-- navbar -->
@@ -16,7 +17,7 @@
         <div class="logo">
           <!-- image logo back to home page -->
           <a href="{% url 'home-page' %}">
-            <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+            <img src="{% static 'images/logo.png' %}" alt="logo" />
           </a>
 
           <!-- text logo back to home page -->
@@ -26,9 +27,7 @@
         <!-- navlist -->
         <div class="nav-links">
           <a href="{% url 'home-page' %}">Home</a>
-          {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
           <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
-          {% endif %}
         </div>
 
         <!-- profile -->
@@ -62,7 +61,9 @@
           </li>
           {% endfor %}
         </ul>
+        {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
         <a href="{% url 'book-create' %}" class="create-book"><i class="fa-solid fa-plus"></i>Create New Book</a>
+        {% endif %}
       </div>
     </section>
 

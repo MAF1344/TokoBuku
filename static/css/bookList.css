@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -20,6 +21,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -84,18 +88,6 @@ body {
   color: #007bff;
 }
 
-.book-list {
-  padding: 2rem;
-  margin: 3rem auto;
-}
-
-.book-list h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: white;
-  margin: 2rem auto;
-}
-
 .profile {
   margin: 0 auto;
   display: flex;
@@ -109,6 +101,20 @@ body {
   border-radius: 100%;
   padding: 10px;
   color: black;
+}
+
+.book-list {
+  padding: 2rem;
+  margin: 3rem auto;
+  flex: 1;
+  width: 100%;
+}
+
+.book-list h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin: 2rem auto;
 }
 
 .book-list .container {

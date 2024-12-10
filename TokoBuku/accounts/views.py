@@ -60,7 +60,7 @@ def profile_edit(request):
         form = UserForm(instance=user)
     return render(request, "accounts/profile-edit.html", {'form': form})
 
-
+@login_required
 def profile_delete(request):
     user = request.user
     error_message = None
