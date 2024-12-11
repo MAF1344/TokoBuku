@@ -38,6 +38,10 @@ body {
   z-index: 1000;
 }
 
+.navbar .container .logo {
+  margin: auto;
+}
+
 .navbar.scrolled {
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 0.5s;
@@ -169,4 +173,54 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .navbar .container .title {
+    font-size: 2rem;
+  }
+
+  .book-create {
+    margin: 5rem auto;
+  }
+
+  .book-create .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .book-create h1 {
+    font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-create label {
+    font-size: 1.3rem;
+  }
+
+  .book-create select {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-create .container {
+    padding: 1rem;
+  }
+
+  .book-create h1 {
+    font-size: 1.1rem;
+  }
 }

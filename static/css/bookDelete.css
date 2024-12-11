@@ -170,3 +170,40 @@ body {
   right: 0;
   z-index: 1000;
 }
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .book-delete {
+    width: 60%;
+    margin: 2rem auto;
+  }
+
+  .book-delete .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .book-delete h1 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-delete .container {
+    padding: 1rem;
+  }
+
+  .book-delete h1 {
+    font-size: 1.1rem;
+  }
+
+  .book-delete input[type='text'],
+  .book-delete input[type='password'],
+  .book-delete input[type='email'],
+  .book-delete button {
+    font-size: 0.8rem;
+  }
+}

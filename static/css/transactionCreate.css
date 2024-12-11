@@ -246,3 +246,54 @@ body {
   right: 0;
   z-index: 1000;
 }
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .navbar .container .title {
+    font-size: 2rem;
+  }
+
+  .transaction-create {
+    margin: 5rem auto;
+  }
+
+  .transaction-create .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .transaction-create h1 {
+    font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+  }
+
+  .transaction-create label {
+    font-size: 1.3rem;
+  }
+
+  .transaction-create select {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .transaction-create .container {
+    padding: 1rem;
+  }
+
+  .transaction-create h1 {
+    font-size: 1.1rem;
+  }
+}

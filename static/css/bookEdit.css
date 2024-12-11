@@ -167,3 +167,53 @@ body {
   right: 0;
   z-index: 1000;
 }
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .navbar .container .title {
+    font-size: 2rem;
+  }
+
+  .book-edit {
+    margin: 5rem auto;
+  }
+
+  .book-edit .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .book-edit h1 {
+    font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-edit label {
+    font-size: 1.3rem;
+  }
+
+  .book-edit select {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-edit .container {
+    padding: 1rem;
+  }
+
+  .book-edit h1 {
+    font-size: 1.1rem;
+  }
+}

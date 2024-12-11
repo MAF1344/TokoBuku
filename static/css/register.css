@@ -137,3 +137,40 @@ body {
   right: 0;
   z-index: 1000;
 }
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .register {
+    width: 60%;
+    margin: 2rem auto;
+  }
+
+  .register .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .register h1 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register .container {
+    padding: 1rem;
+  }
+
+  .register h1 {
+    font-size: 1.1rem;
+  }
+
+  .register input[type='text'],
+  .register input[type='password'],
+  .register input[type='email'],
+  .register button {
+    font-size: 0.8rem;
+  }
+}

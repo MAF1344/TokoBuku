@@ -20,6 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -33,11 +36,6 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-}
-
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  transition: background-color 0.5s;
 }
 
 .container {
@@ -66,6 +64,10 @@ body {
 }
 
 .login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 3rem 0;
 }
 
@@ -78,7 +80,7 @@ body {
   border-radius: 0.5rem;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   max-width: 25rem;
-  margin: 2rem auto;
+  width: 100%;
 }
 
 .login h1 {
@@ -136,8 +138,48 @@ body {
   text-align: center;
   font-weight: 500;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .login {
+    width: 60%;
+    margin: 2rem auto;
+  }
+
+  .login .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .login h1 {
+    font-size: 1.25rem;
+  }
+
+  .login input[type='text'],
+  .login input[type='password'],
+  .login input[type='email'],
+  .login button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login .container {
+    padding: 1rem;
+  }
+
+  .login h1 {
+    font-size: 1.1rem;
+  }
+
+  .login input[type='text'],
+  .login input[type='password'],
+  .login input[type='email'],
+  .login button {
+    font-size: 0.8rem;
+  }
 }

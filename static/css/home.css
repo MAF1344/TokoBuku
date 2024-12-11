@@ -28,7 +28,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   left: 0;
@@ -36,16 +36,11 @@ body {
   z-index: 1000;
 }
 
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  transition: background-color 0.5s;
-}
-
 .container {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
 }
 
@@ -55,8 +50,8 @@ body {
 }
 
 .logo img {
-  height: 50px;
-  margin-right: 10px;
+  height: 3.125rem;
+  margin-right: 0.625rem;
 }
 
 .title {
@@ -64,6 +59,12 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: black;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .nav-links {
@@ -74,7 +75,7 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 1.25rem;
   color: black;
   font-weight: 500;
   transition: 0.3s;
@@ -84,19 +85,40 @@ body {
   color: #007bff;
 }
 
+.nav-icon {
+  display: none;
+}
+
 .profile {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 
 .profile i {
-  border: 2px solid black;
+  border: 0.125rem solid black;
   border-radius: 100%;
-  padding: 10px;
+  padding: 0.625rem;
   color: black;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+}
+
+.profile i:hover {
+  border: 0.125rem solid #007bff;
+  color: #007bff;
+}
+
+.profile a {
+  text-decoration: none;
+  color: black;
+}
+
+.profile a:hover {
+  color: #007bff;
 }
 
 .about,
@@ -175,6 +197,19 @@ body {
   color: white;
 }
 
+.contact li {
+  display: flex;
+}
+
+.contact i {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.contact li a {
+  display: flex;
+}
+
 .about h1,
 .creator h1,
 .contact h1 {
@@ -193,5 +228,119 @@ body {
   padding: 2rem 0;
   text-align: center;
   font-weight: 500;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: -300%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(248, 249, 250, 0.8);
+    padding: 1.25rem 0;
+    border-top: 0.0625rem solid #ccc;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out;
+  }
+
+  .nav-group .profile {
+    margin: 0.5rem auto;
+  }
+
+  .nav-group.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(248, 249, 250, 0.8);
+    padding: 1.25rem 0;
+    border-top: 0.0625rem solid #ccc;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-group.active .profile {
+    margin: 0.5rem auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    margin: 0.5rem 0;
+  }
+
+  .nav-icon {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav-icon i {
+    font-size: 1.6rem;
+  }
+
+  .nav-icon .bars {
+    display: flex;
+  }
+
+  .nav-icon .xmark {
+    display: none;
+  }
+
+  .nav-icon.active .bars {
+    display: none;
+  }
+
+  .nav-icon.active .xmark {
+    display: flex;
+  }
+
+  .about.active {
+    margin-top: 18rem;
+  }
+
+  .about {
+    width: 100%;
+    margin: 0;
+    padding: 0 2rem;
+  }
+
+  .about .container {
+    text-align: center;
+  }
+
+  .creator {
+    padding: 3rem 3rem;
+  }
+
+  .creator-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .creator-content p {
+    margin: 3rem 0;
+  }
+
+  .contact .container h1 {
+    width: 100%;
+  }
+
+  .contact li a {
+    display: flex;
+    flex-direction: column;
+  }
 }

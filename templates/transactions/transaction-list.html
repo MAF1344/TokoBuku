@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction List</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/transactionList.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
@@ -19,17 +19,23 @@
           </a>
           <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
         </div>
-        <div class="nav-links">
-          <a href="{%  url 'home-page' %}">Home</a>
-          <a href="{%  url 'book-list' %}">Katalog Buku</a>
+        <div class="nav-group">
+          <div class="nav-links">
+            <a href="{%  url 'home-page' %}">Home</a>
+            <a href="{%  url 'book-list' %}">Katalog Buku</a>
+          </div>
+          <div class="profile">
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
+            <a href="{% url 'profile-details' %}">{{ user.username }}</a>
+            {% else %}
+            <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
+            {% endif %}
+          </div>
         </div>
-        <div class="profile">
-          {% if user.is_authenticated %}
-          <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
-          <p>{{ user.username }}</p>
-          {% else %}
-          <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
-          {% endif %}
+        <div class="nav-icon">
+          <i class="fa-solid fa-bars bars"></i>
+          <i class="fa-solid fa-xmark xmark"></i>
         </div>
       </div>
     </nav>
@@ -57,5 +63,31 @@
 
     <!-- footer -->
     <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+
+    <!-- script untuk membuka dan menutup navbar pada layar kecil -->
+    <script>
+      // Get the elements
+      const barsIcon = document.querySelector('.bars');
+      const xmarkIcon = document.querySelector('.xmark');
+      const transactionListSection = document.getElementById('transaction-list');
+      const navGroup = document.querySelector('.nav-group');
+      const navIcon = document.querySelector('.nav-icon');
+
+      // Add click event listener to the bars icon
+      barsIcon.addEventListener('click', function () {
+        // Toggle 'active' class on the specified elements
+        transactionListSection.classList.toggle('active');
+        navGroup.classList.toggle('active');
+        navIcon.classList.toggle('active');
+      });
+
+      // Add click event listener to the xmark icon
+      xmarkIcon.addEventListener('click', function () {
+        // Toggle 'active' class on the specified elements
+        transactionListSection.classList.toggle('active');
+        navGroup.classList.toggle('active');
+        navIcon.classList.toggle('active');
+      });
+    </script>
   </body>
 </html>

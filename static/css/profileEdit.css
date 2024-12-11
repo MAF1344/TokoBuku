@@ -35,6 +35,10 @@ body {
   z-index: 1000;
 }
 
+.navbar .container .logo {
+  margin: auto;
+}
+
 .navbar.scrolled {
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 0.5s;
@@ -163,4 +167,41 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .profile-edit {
+    width: 60%;
+    margin: 2rem auto;
+  }
+
+  .profile-edit .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .profile-edit h1 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-edit .container {
+    padding: 1rem;
+  }
+
+  .profile-edit h1 {
+    font-size: 1.1rem;
+  }
+
+  .profile-edit input[type='text'],
+  .profile-edit input[type='password'],
+  .profile-edit input[type='email'],
+  .profile-edit button {
+    font-size: 0.8rem;
+  }
 }
