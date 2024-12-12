@@ -5,7 +5,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toko Buku</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/book/bookList.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category/categoryList.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
@@ -28,11 +28,8 @@
           <!-- navlist -->
           <div class="nav-links">
             <a href="{% url 'home-page' %}">Home</a>
-            <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
-            {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+            <a href="{% url 'book-list' %}">Katalog Buku</a>
             <a href="{% url 'author-list' %}">Daftar Penulis</a>
-            <a href="{% url 'category-list' %}">Daftar Kategori</a>
-            {% endif %}
           </div>
 
           <!-- profile -->
@@ -53,27 +50,26 @@
       </div>
     </nav>
 
-    <section id="book-list" class="book-list">
+    <section id="category-list" class="category-list">
       <div class="container">
-        <h1>Katalog Buku</h1>
+        <h1>Daftar Kategori Buku</h1>
         <ul>
-          {% for book in books %}
+          {% for category in categories %}
           <li>
             <span>
-              <a href="{% url 'book-details' book.id %}" class="book-title">{{ book.title }}</a>
+              <a href="{% url 'category-details' category.id %}" class="category-title">{{ category.name }}</a>
             </span>
             <div class="edit-delete">
               {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
-              <a href="{% url 'book-edit' book.id %}" class="edit">Edit</a>
-              <a href="{% url 'book-delete' book.id %}" class="delete">Delete</a>
+              <a href="{% url 'category-edit' category.id %}" class="edit">Edit</a>
+              <a href="{% url 'category-delete' category.id %}" class="delete">Delete</a>
               {% endif %}
-              <a href="{% url 'transaction-create' book.id %}" class="buy">Beli</a>
             </div>
           </li>
           {% endfor %}
         </ul>
         {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
-        <a href="{% url 'book-create' %}" class="create-book"><i class="fa-solid fa-plus"></i>Create New Book</a>
+        <a href="{% url 'category-create' %}" class="create-category"><i class="fa-solid fa-plus"></i>Create New Book Category</a>
         {% endif %}
       </div>
     </section>
@@ -86,7 +82,7 @@
       // Get the elements
       const barsIcon = document.querySelector('.bars');
       const xmarkIcon = document.querySelector('.xmark');
-      const transactionDetailsSection = document.getElementById('book-list');
+      const transactionDetailsSection = document.getElementById('category-list');
       const navGroup = document.querySelector('.nav-group');
       const navIcon = document.querySelector('.nav-icon');
 

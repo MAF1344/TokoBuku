@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background-image: url('../../images/body-bg-img.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navbar {
+  background-color: rgba(248, 249, 250, 0.8);
+  padding: 1.6rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar .container .logo {
+  margin: auto;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 1);
+  transition: background-color 0.5s;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.author-create {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.author-create .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author-create h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.author-create form {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-create form p {
+  margin-bottom: 1rem;
+}
+
+.author-create input[type='text'],
+.author-create input[type='email'],
+.author-create input[type='number'],
+.author-create input[type='date'],
+.author-create textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.author-create input[type='text']:focus,
+.author-create input[type='email']:focus,
+.author-create input[type='number']:focus,
+.author-create input[type='date']:focus,
+.author-create textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.author-create button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.author-create button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6c757d;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
+}
+
+.footer {
+  background-color: rgba(248, 249, 250, 0.8);
+  padding: 2rem 0;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar .container .logo {
+    margin: auto;
+  }
+
+  .navbar .container .title {
+    font-size: 2rem;
+  }
+
+  .author-create {
+    margin: 5rem auto;
+    width: 80%;
+  }
+
+  .author-create .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .author-create h1 {
+    font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-create label {
+    font-size: 1.3rem;
+  }
+
+  .author-create select {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .author-create .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .author-create h1 {
+    font-size: 1.1rem;
+  }
+}

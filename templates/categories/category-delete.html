@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category/categoryDelete.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.png' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="category-delete" class="category-delete">
+      <div class="container">
+        <h1>Delete Category</h1>
+        <p>Are you sure you want to delete {{ category.name }} category? Please confirm by entering the category name.</p>
+        {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+        {% endif %}
+        <form method="POST">
+          {% csrf_token %}
+          <label for="name">Category Name:</label>
+          <input type="text" id="name" name="name" required />
+          <button type="submit">Delete Category</button>
+          <a href="javascript:history.back()" class="back-button" style="background-color: #6c757d"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

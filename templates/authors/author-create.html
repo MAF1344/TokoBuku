@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/author/authorCreate.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home-page' %}">
+            <img src="{% static 'images/logo.png' %}" alt="logo" />
+          </a>
+          <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="author-create" class="author-create">
+      <div class="container">
+        <h1>Create New Author</h1>
+        <form method="POST">
+          {% csrf_token %} {{ form.as_p }}
+          <!-- Menampilkan form secara otomatis -->
+          <button type="submit">Create Author</button>
+          <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
+  </body>
+</html>

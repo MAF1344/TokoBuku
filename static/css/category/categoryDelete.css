@@ -67,7 +67,7 @@ body {
   color: black;
 }
 
-.book-delete {
+.category-delete {
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5rem;
@@ -77,38 +77,38 @@ body {
   flex: 1;
 }
 
-.book-delete .container {
+.category-delete .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.book-delete h1 {
+.category-delete h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
   color: #333;
 }
 
-.book-delete p {
+.category-delete p {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   color: #555;
 }
 
-.book-delete form {
+.category-delete form {
   display: flex;
   flex-direction: column;
 }
 
-.book-delete label {
+.category-delete label {
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #333;
 }
 
-.book-delete input[type='text'] {
+.category-delete input[type='text'] {
   width: 20rem;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -118,12 +118,12 @@ body {
   transition: border-color 0.3s;
 }
 
-.book-delete input[type='text']:focus {
+.category-delete input[type='text']:focus {
   border-color: #dc3545;
   outline: none;
 }
 
-.book-delete button {
+.category-delete button {
   width: 100%;
   padding: 0.75rem;
   background-color: #dc3545;
@@ -135,7 +135,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.book-delete button:hover {
+.category-delete button:hover {
   background-color: #c82333;
 }
 
@@ -179,34 +179,34 @@ body {
     margin: auto;
   }
 
-  .book-delete {
+  .category-delete {
     width: 80%;
     margin: 4rem auto;
   }
 
-  .book-delete .container {
-    padding: 1.5rem;
+  .category-delete .container {
+    padding: 2.5rem 1.5rem;
     max-width: 90%;
   }
 
-  .book-delete h1 {
+  .category-delete h1 {
     font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
-  .book-delete .container {
+  .category-delete .container {
     padding: 1rem;
   }
 
-  .book-delete h1 {
+  .category-delete h1 {
     font-size: 1.1rem;
   }
 
-  .book-delete input[type='text'],
-  .book-delete input[type='password'],
-  .book-delete input[type='email'],
-  .book-delete button {
+  .category-delete input[type='text'],
+  .category-delete input[type='password'],
+  .category-delete input[type='email'],
+  .category-delete button {
     font-size: 0.8rem;
   }
 }

@@ -20,9 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -40,6 +40,11 @@ body {
 
 .navbar .container .logo {
   margin: auto;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 1);
+  transition: background-color 0.5s;
 }
 
 .container {
@@ -67,49 +72,42 @@ body {
   color: black;
 }
 
-.book-delete {
+.category-create {
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
-  max-width: 37.5rem;
-  flex: 1;
+  max-width: 600px;
 }
 
-.book-delete .container {
+.category-create .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.book-delete h1 {
+.category-create h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
   color: #333;
 }
 
-.book-delete p {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.book-delete form {
+.category-create form {
   display: flex;
   flex-direction: column;
 }
 
-.book-delete label {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #333;
+.category-create form p {
+  margin-bottom: 1rem;
 }
 
-.book-delete input[type='text'] {
-  width: 20rem;
+.category-create input[type='text'],
+.category-create input[type='email'],
+.category-create input[type='number'],
+.category-create textarea {
+  width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -118,15 +116,18 @@ body {
   transition: border-color 0.3s;
 }
 
-.book-delete input[type='text']:focus {
-  border-color: #dc3545;
+.category-create input[type='text']:focus,
+.category-create input[type='email']:focus,
+.category-create input[type='number']:focus,
+.category-create textarea:focus {
+  border-color: #007bff;
   outline: none;
 }
 
-.book-delete button {
+.category-create button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #dc3545;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -135,8 +136,8 @@ body {
   transition: background-color 0.3s;
 }
 
-.book-delete button:hover {
-  background-color: #c82333;
+.category-create button:hover {
+  background-color: #0056b3;
 }
 
 .back-button {
@@ -179,34 +180,48 @@ body {
     margin: auto;
   }
 
-  .book-delete {
-    width: 80%;
-    margin: 4rem auto;
+  .navbar .container .title {
+    font-size: 2rem;
   }
 
-  .book-delete .container {
+  .category-create {
+    margin: 5rem auto;
+    width: 90%;
+  }
+
+  .category-create .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .book-delete h1 {
+  .category-create h1 {
     font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-create label {
+    font-size: 1.3rem;
+  }
+
+  .category-create select {
+    padding: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .book-delete .container {
+  .category-create .container {
     padding: 1rem;
   }
 
-  .book-delete h1 {
+  .category-create h1 {
     font-size: 1.1rem;
-  }
-
-  .book-delete input[type='text'],
-  .book-delete input[type='password'],
-  .book-delete input[type='email'],
-  .book-delete button {
-    font-size: 0.8rem;
   }
 }

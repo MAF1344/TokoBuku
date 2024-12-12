@@ -4,13 +4,12 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toko Buku</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/category/categoryCreate.css' %}" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forbidden.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
   <body>
-    <!-- navbar -->
     <nav class="navbar" id="navbar">
       <div class="container">
         <div class="logo">
@@ -22,19 +21,13 @@
       </div>
     </nav>
 
-    <section id="category-create" class="category-create">
+    <section id="forbidden" class="forbidden">
       <div class="container">
-        <h1>Create New category</h1>
-        <form method="POST">
-          {% csrf_token %} {{ form.as_p }}
-          <!-- Menampilkan form secara otomatis -->
-          <button type="submit">Create Category</button>
-          <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
-        </form>
+        <h1>403 Forbidden</h1>
+        <p>You do not have permission to access this page.</p>
       </div>
     </section>
 
-    <!-- footer -->
     <footer class="footer" id="footer">&copy; Muhammad Al Fatih and Softuni 2024. All rights reserved.</footer>
   </body>
 </html>
