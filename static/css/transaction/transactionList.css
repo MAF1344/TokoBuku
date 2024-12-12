@@ -13,13 +13,16 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -121,57 +124,81 @@ body {
   color: #007bff;
 }
 
-.book-details {
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.transaction-list {
+  padding: 2rem 0;
   margin: 2rem auto;
-  max-width: 37.5rem;
   flex: 1;
 }
 
-.book-details .container {
+.transaction-list .container {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
 }
 
-.book-details h1 {
-  margin-bottom: 1.5rem;
+.transaction-list h1 {
+  text-align: center;
+  margin-bottom: 2rem;
   font-size: 2rem;
-  color: #333;
+  color: white;
 }
 
-.book-details p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 1rem;
+.transaction-list ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.book-details .edit,
-.book-details .delete {
+.transaction-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.transaction-list li:hover {
+  transform: translateY(-5px);
+}
+
+.transaction-list .details {
   display: inline-block;
-  margin: 0.5rem 0;
-  padding: 0.75rem 1.5rem;
+  width: 100%;
+  padding: 0.25rem;
   background-color: #007bff;
   color: white;
-  text-decoration: none;
+  text-align: center;
+  border: none;
   border-radius: 0.25rem;
   font-size: 1rem;
+  text-decoration: none;
+  margin-top: 0.75rem;
   transition: background-color 0.3s;
-  width: 100%;
-  text-align: center;
 }
 
-.book-details .delete {
-  background-color: #dc3545;
+.transaction-list .book-title,
+.transaction-list .delete {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.transaction-list a:hover {
+  text-decoration: underline;
+}
+
+.transaction-list .delete {
+  color: red;
 }
 
 .back-button {
   display: inline-block;
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.25rem;
   background-color: #6c757d;
   color: white;
   text-align: center;
@@ -187,10 +214,6 @@ body {
   background-color: #0056b3;
 }
 
-.book-details .delete:hover {
-  background-color: #c82333;
-}
-
 .back-button:hover {
   background-color: #5a6268;
 }
@@ -204,19 +227,33 @@ body {
   padding: 2rem 0;
   text-align: center;
   font-weight: 500;
-  box-shadow: 0 -0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
-  margin-top: auto;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
 @media only screen and (max-width: 768px) {
-  .book-details {
-    width: 80%;
-    margin: 6rem auto;
+  /* body {
+    padding-top: 5rem;
   }
 
-  .book-details .container {
-    text-align: center;
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  } */
+
+  .nav-group {
+    transition: top 0.3s ease-in-out; /* Pastikan transisi ada */
+  }
+
+  .transaction-list {
+    max-width: 70%;
+    margin: 4rem auto;
   }
 
   .nav-group {
@@ -291,7 +328,7 @@ body {
     display: flex;
   }
 
-  .book-details.active {
-    margin-top: 18rem;
+  .transaction-list.active {
+    margin-top: 13rem;
   }
 }

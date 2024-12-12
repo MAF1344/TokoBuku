@@ -13,16 +13,13 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 .navbar {
@@ -36,6 +33,11 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 1);
+  transition: background-color 0.5s;
 }
 
 .container {
@@ -63,44 +65,48 @@ body {
   color: black;
 }
 
-.login {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem 0;
+.book-delete {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 600px;
 }
 
-.login .container {
+.book-delete .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-  max-width: 25rem;
-  width: 100%;
 }
 
-.login h1 {
+.book-delete h1 {
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #333;
 }
 
-.login label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+.book-delete p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
   color: #555;
 }
 
-.login input[type='text'],
-.login input[type='password'],
-.login input[type='email'] {
-  width: 100%;
+.book-delete form {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-delete label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.book-delete input[type='text'] {
+  width: 20rem;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -109,17 +115,15 @@ body {
   transition: border-color 0.3s;
 }
 
-.login input[type='text']:focus,
-.login input[type='password']:focus,
-.login input[type='email']:focus {
-  border-color: #007bff;
+.book-delete input[type='text']:focus {
+  border-color: #dc3545;
   outline: none;
 }
 
-.login button {
+.book-delete button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #dc3545;
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -128,8 +132,31 @@ body {
   transition: background-color 0.3s;
 }
 
-.login button:hover {
-  background-color: #0056b3;
+.book-delete button:hover {
+  background-color: #c82333;
+}
+
+.back-button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6c757d;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
 }
 
 .footer {
@@ -138,6 +165,10 @@ body {
   text-align: center;
   font-weight: 500;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -145,41 +176,34 @@ body {
     margin: auto;
   }
 
-  .login {
+  .book-delete {
     width: 60%;
     margin: 2rem auto;
   }
 
-  .login .container {
+  .book-delete .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .login h1 {
+  .book-delete h1 {
     font-size: 1.25rem;
-  }
-
-  .login input[type='text'],
-  .login input[type='password'],
-  .login input[type='email'],
-  .login button {
-    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .login .container {
+  .book-delete .container {
     padding: 1rem;
   }
 
-  .login h1 {
+  .book-delete h1 {
     font-size: 1.1rem;
   }
 
-  .login input[type='text'],
-  .login input[type='password'],
-  .login input[type='email'],
-  .login button {
+  .book-delete input[type='text'],
+  .book-delete input[type='password'],
+  .book-delete input[type='email'],
+  .book-delete button {
     font-size: 0.8rem;
   }
 }

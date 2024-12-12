@@ -13,16 +13,14 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -72,72 +70,56 @@ body {
   color: black;
 }
 
-.book-create {
+.transaction-delete {
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 2rem auto;
-  max-width: 600px;
+  margin: 3rem auto;
+  max-width: 37.5rem;
+  flex: 1;
 }
 
-.book-create .container {
+.transaction-delete .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.book-create h1 {
+.transaction-delete h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
   color: #333;
 }
 
-.book-create form {
+.transaction-delete p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.transaction-delete form {
   display: flex;
   flex-direction: column;
 }
 
-.book-create form p {
-  margin-bottom: 1rem;
-}
-
-.book-create input[type='text'],
-.book-create input[type='email'],
-.book-create input[type='number'],
-.book-create textarea {
+.transaction-delete button {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.book-create input[type='text']:focus,
-.book-create input[type='email']:focus,
-.book-create input[type='number']:focus,
-.book-create textarea:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.book-create button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #007bff;
+  background-color: red;
   color: white;
   border: none;
   border-radius: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 1rem;
 }
 
-.book-create button:hover {
-  background-color: #0056b3;
+.transaction-delete button:hover {
+  background-color: darkred;
 }
 
 .back-button {
@@ -180,47 +162,34 @@ body {
     margin: auto;
   }
 
-  .navbar .container .title {
-    font-size: 2rem;
+  .transaction-delete {
+    width: 60%;
+    margin: 4rem auto;
   }
 
-  .book-create {
-    margin: 5rem auto;
-  }
-
-  .book-create .container {
+  .transaction-delete .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .book-create h1 {
+  .transaction-delete h1 {
     font-size: 1.25rem;
-  }
-
-  form {
-    width: 100%;
-  }
-
-  form p {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .book-create label {
-    font-size: 1.3rem;
-  }
-
-  .book-create select {
-    padding: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .book-create .container {
+  .transaction-delete .container {
     padding: 1rem;
   }
 
-  .book-create h1 {
+  .transaction-delete h1 {
     font-size: 1.1rem;
+  }
+
+  .transaction-delete input[type='text'],
+  .transaction-delete input[type='password'],
+  .transaction-delete input[type='email'],
+  .transaction-delete button {
+    font-size: 0.8rem;
   }
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
@@ -13,7 +13,7 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,10 +35,6 @@ body {
   z-index: 1000;
 }
 
-.navbar .container .logo {
-  margin: auto;
-}
-
 .navbar.scrolled {
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 0.5s;
@@ -58,8 +54,8 @@ body {
 }
 
 .logo img {
-  height: 5rem;
-  margin-right: 1rem;
+  height: 50px;
+  margin-right: 10px;
 }
 
 .title {
@@ -69,39 +65,41 @@ body {
   color: black;
 }
 
-.profile-edit {
-  margin: 3rem 0;
+.book-edit {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 600px;
 }
 
-.profile-edit .container {
+.book-edit .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-  max-width: 25rem;
-  margin: 2rem auto;
 }
 
-.profile-edit h1 {
+.book-edit h1 {
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #333;
 }
 
-.profile-edit label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #555;
+.book-edit form {
+  display: flex;
+  flex-direction: column;
 }
 
-.profile-edit input[type='text'],
-.profile-edit input[type='email'],
-.profile-edit input[type='password'] {
+.book-edit form p {
+  margin-bottom: 1rem;
+}
+
+.book-edit input[type='text'],
+.book-edit input[type='email'],
+.book-edit input[type='number'],
+.book-edit textarea {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -111,14 +109,15 @@ body {
   transition: border-color 0.3s;
 }
 
-.profile-edit input[type='text']:focus,
-.profile-edit input[type='email']:focus,
-.profile-edit input[type='password']:focus {
+.book-edit input[type='text']:focus,
+.book-edit input[type='email']:focus,
+.book-edit input[type='number']:focus,
+.book-edit textarea:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.profile-edit button {
+.book-edit button {
   width: 100%;
   padding: 0.75rem;
   background-color: #007bff;
@@ -130,7 +129,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.profile-edit button:hover {
+.book-edit button:hover {
   background-color: #0056b3;
 }
 
@@ -174,34 +173,47 @@ body {
     margin: auto;
   }
 
-  .profile-edit {
-    width: 60%;
-    margin: 2rem auto;
+  .navbar .container .title {
+    font-size: 2rem;
   }
 
-  .profile-edit .container {
+  .book-edit {
+    margin: 5rem auto;
+  }
+
+  .book-edit .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .profile-edit h1 {
+  .book-edit h1 {
     font-size: 1.25rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-edit label {
+    font-size: 1.3rem;
+  }
+
+  .book-edit select {
+    padding: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .profile-edit .container {
+  .book-edit .container {
     padding: 1rem;
   }
 
-  .profile-edit h1 {
+  .book-edit h1 {
     font-size: 1.1rem;
-  }
-
-  .profile-edit input[type='text'],
-  .profile-edit input[type='password'],
-  .profile-edit input[type='email'],
-  .profile-edit button {
-    font-size: 0.8rem;
   }
 }

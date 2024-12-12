@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
@@ -13,13 +13,14 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  min-height: 100vh;
 }
 
 .navbar {
@@ -54,8 +55,8 @@ body {
 }
 
 .logo img {
-  height: 50px;
-  margin-right: 10px;
+  height: 5rem;
+  margin-right: 1rem;
 }
 
 .title {
@@ -65,7 +66,11 @@ body {
   color: black;
 }
 
-.register .container {
+.profile-delete {
+  margin: 3rem 0;
+}
+
+.profile-delete .container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,23 +82,28 @@ body {
   margin: 2rem auto;
 }
 
-.register h1 {
+.profile-delete h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: #333;
 }
 
-.register label {
+.profile-delete p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.profile-delete label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   color: #555;
 }
 
-.register input[type='text'],
-.register input[type='email'],
-.register input[type='password'] {
+.profile-delete input[type='text'] {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -103,17 +113,15 @@ body {
   transition: border-color 0.3s;
 }
 
-.register input[type='text']:focus,
-.register input[type='email']:focus,
-.register input[type='password']:focus {
-  border-color: #007bff;
+.profile-delete input[type='text']:focus {
+  border-color: #dc3545; /* Warna merah untuk fokus */
   outline: none;
 }
 
-.register button {
+.profile-delete button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #dc3545; /* Warna merah untuk tombol */
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -122,8 +130,31 @@ body {
   transition: background-color 0.3s;
 }
 
-.register button:hover {
-  background-color: #0056b3;
+.profile-delete button:hover {
+  background-color: #c82333;
+}
+
+.back-button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6c757d;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
 }
 
 .footer {
@@ -143,34 +174,34 @@ body {
     margin: auto;
   }
 
-  .register {
+  .profile-delete {
     width: 60%;
     margin: 2rem auto;
   }
 
-  .register .container {
+  .profile-delete .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .register h1 {
+  .profile-delete h1 {
     font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
-  .register .container {
+  .profile-delete .container {
     padding: 1rem;
   }
 
-  .register h1 {
+  .profile-delete h1 {
     font-size: 1.1rem;
   }
 
-  .register input[type='text'],
-  .register input[type='password'],
-  .register input[type='email'],
-  .register button {
+  .profile-delete input[type='text'],
+  .profile-delete input[type='password'],
+  .profile-delete input[type='email'],
+  .profile-delete button {
     font-size: 0.8rem;
   }
 }

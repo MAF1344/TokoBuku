@@ -5,7 +5,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toko Buku</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/book/bookDelete.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category/categoryCreate.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
@@ -22,19 +22,14 @@
       </div>
     </nav>
 
-    <section id="book-delete" class="book-delete">
+    <section id="category-create" class="category-create">
       <div class="container">
-        <h1>Delete Book</h1>
-        <p>Are you sure you want to delete {{ book.title }}? Please confirm by entering the book title.</p>
-        {% if error_message %}
-        <p style="color: red">{{ error_message }}</p>
-        {% endif %}
+        <h1>Create New category</h1>
         <form method="POST">
-          {% csrf_token %}
-          <label for="title">Book Title:</label>
-          <input type="text" id="title" name="title" required />
-          <button type="submit">Delete Book</button>
-          <a href="javascript:history.back()" class="back-button" style="background-color: #6c757d"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
+          {% csrf_token %} {{ form.as_p }}
+          <!-- Menampilkan form secara otomatis -->
+          <button type="submit">Create Category</button>
+          <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
         </form>
       </div>
     </section>

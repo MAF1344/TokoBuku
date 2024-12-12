@@ -13,7 +13,7 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -65,7 +65,7 @@ body {
   color: black;
 }
 
-.book-edit {
+.transaction-create {
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 0.5rem;
@@ -74,50 +74,25 @@ body {
   max-width: 600px;
 }
 
-.book-edit .container {
+.transaction-create .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.book-edit h1 {
+.transaction-create h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
   color: #333;
 }
 
-.book-edit form {
+.transaction-create form {
   display: flex;
   flex-direction: column;
 }
 
-.book-edit form p {
-  margin-bottom: 1rem;
-}
-
-.book-edit input[type='text'],
-.book-edit input[type='email'],
-.book-edit input[type='number'],
-.book-edit textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.book-edit input[type='text']:focus,
-.book-edit input[type='email']:focus,
-.book-edit input[type='number']:focus,
-.book-edit textarea:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.book-edit button {
+.transaction-create button {
   width: 100%;
   padding: 0.75rem;
   background-color: #007bff;
@@ -127,10 +102,114 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 1rem;
 }
 
-.book-edit button:hover {
+.transaction-create button:hover {
   background-color: #0056b3;
+}
+
+.transaction-create input[type='text'],
+.transaction-create input[type='email'],
+.transaction-create input[type='number'],
+.transaction-create textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.transaction-create input[type='text']:focus,
+.transaction-create input[type='email']:focus,
+.transaction-create input[type='number']:focus,
+.transaction-create textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.price {
+  display: inline-block;
+  padding: 0.8rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0.9375rem;
+}
+
+.book-title {
+  display: inline-block;
+  padding: 0.8rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0.9375rem;
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 300px;
+}
+
+.popup-content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #0056b3;
+}
+
+.popup-content .cancel-button {
+  background-color: #dc3545;
+}
+
+.popup-content .cancel-button:hover {
+  background-color: #c82333;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .back-button {
@@ -177,16 +256,16 @@ body {
     font-size: 2rem;
   }
 
-  .book-edit {
+  .transaction-create {
     margin: 5rem auto;
   }
 
-  .book-edit .container {
+  .transaction-create .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .book-edit h1 {
+  .transaction-create h1 {
     font-size: 1.25rem;
   }
 
@@ -197,23 +276,24 @@ body {
   form p {
     display: flex;
     flex-direction: column;
-  }
-
-  .book-edit label {
     font-size: 1.3rem;
   }
 
-  .book-edit select {
+  .transaction-create label {
+    font-size: 1.3rem;
+  }
+
+  .transaction-create select {
     padding: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .book-edit .container {
+  .transaction-create .container {
     padding: 1rem;
   }
 
-  .book-edit h1 {
+  .transaction-create h1 {
     font-size: 1.1rem;
   }
 }

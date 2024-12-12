@@ -13,14 +13,13 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  min-height: 100vh;
 }
 
 .navbar {
@@ -36,13 +35,13 @@ body {
   z-index: 1000;
 }
 
-.navbar .container .logo {
-  margin: auto;
-}
-
 .navbar.scrolled {
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 0.5s;
+}
+
+.navbar .container .logo {
+  margin: auto;
 }
 
 .container {
@@ -70,79 +69,65 @@ body {
   color: black;
 }
 
-.transaction-delete {
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
-  max-width: 37.5rem;
-  flex: 1;
-}
-
-.transaction-delete .container {
+.register .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  max-width: 25rem;
+  margin: 2rem auto;
 }
 
-.transaction-delete h1 {
+.register h1 {
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333;
 }
 
-.transaction-delete p {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+.register label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   color: #555;
 }
 
-.transaction-delete form {
-  display: flex;
-  flex-direction: column;
-}
-
-.transaction-delete button {
+.register input[type='text'],
+.register input[type='email'],
+.register input[type='password'] {
   width: 100%;
   padding: 0.75rem;
-  background-color: red;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.register input[type='text']:focus,
+.register input[type='email']:focus,
+.register input[type='password']:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.register button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 1rem;
 }
 
-.transaction-delete button:hover {
-  background-color: darkred;
-}
-
-.back-button {
-  display: inline-block;
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #6c757d;
-  color: white;
-  text-align: center;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  text-decoration: none;
-  margin-top: 1rem;
-  transition: background-color 0.3s;
-}
-
-.back-button:hover {
-  background-color: #5a6268;
-}
-
-.back-button i {
-  margin-right: 0.5rem;
+.register button:hover {
+  background-color: #0056b3;
 }
 
 .footer {
@@ -162,34 +147,34 @@ body {
     margin: auto;
   }
 
-  .transaction-delete {
+  .register {
     width: 60%;
-    margin: 4rem auto;
+    margin: 2rem auto;
   }
 
-  .transaction-delete .container {
+  .register .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .transaction-delete h1 {
+  .register h1 {
     font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
-  .transaction-delete .container {
+  .register .container {
     padding: 1rem;
   }
 
-  .transaction-delete h1 {
+  .register h1 {
     font-size: 1.1rem;
   }
 
-  .transaction-delete input[type='text'],
-  .transaction-delete input[type='password'],
-  .transaction-delete input[type='email'],
-  .transaction-delete button {
+  .register input[type='text'],
+  .register input[type='password'],
+  .register input[type='email'],
+  .register button {
     font-size: 0.8rem;
   }
 }

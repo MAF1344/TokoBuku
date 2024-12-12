@@ -13,14 +13,13 @@ html {
 
 body {
   position: relative;
-  background-image: url('../images/body-bg-img.jpg');
+  background-image: url('../../images/body-bg-img.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  min-height: 100vh;
 }
 
 .navbar {
@@ -34,6 +33,10 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.navbar .container .logo {
+  margin: auto;
 }
 
 .navbar.scrolled {
@@ -66,11 +69,11 @@ body {
   color: black;
 }
 
-.profile-delete {
+.profile-edit {
   margin: 3rem 0;
 }
 
-.profile-delete .container {
+.profile-edit .container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,28 +85,23 @@ body {
   margin: 2rem auto;
 }
 
-.profile-delete h1 {
+.profile-edit h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: #333;
 }
 
-.profile-delete p {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #555;
-  font-size: 1rem;
-}
-
-.profile-delete label {
+.profile-edit label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   color: #555;
 }
 
-.profile-delete input[type='text'] {
+.profile-edit input[type='text'],
+.profile-edit input[type='email'],
+.profile-edit input[type='password'] {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -113,15 +111,17 @@ body {
   transition: border-color 0.3s;
 }
 
-.profile-delete input[type='text']:focus {
-  border-color: #dc3545; /* Warna merah untuk fokus */
+.profile-edit input[type='text']:focus,
+.profile-edit input[type='email']:focus,
+.profile-edit input[type='password']:focus {
+  border-color: #007bff;
   outline: none;
 }
 
-.profile-delete button {
+.profile-edit button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #dc3545; /* Warna merah untuk tombol */
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -130,8 +130,8 @@ body {
   transition: background-color 0.3s;
 }
 
-.profile-delete button:hover {
-  background-color: #c82333;
+.profile-edit button:hover {
+  background-color: #0056b3;
 }
 
 .back-button {
@@ -174,34 +174,34 @@ body {
     margin: auto;
   }
 
-  .profile-delete {
+  .profile-edit {
     width: 60%;
     margin: 2rem auto;
   }
 
-  .profile-delete .container {
+  .profile-edit .container {
     padding: 1.5rem;
     max-width: 90%;
   }
 
-  .profile-delete h1 {
+  .profile-edit h1 {
     font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
-  .profile-delete .container {
+  .profile-edit .container {
     padding: 1rem;
   }
 
-  .profile-delete h1 {
+  .profile-edit h1 {
     font-size: 1.1rem;
   }
 
-  .profile-delete input[type='text'],
-  .profile-delete input[type='password'],
-  .profile-delete input[type='email'],
-  .profile-delete button {
+  .profile-edit input[type='text'],
+  .profile-edit input[type='password'],
+  .profile-edit input[type='email'],
+  .profile-edit button {
     font-size: 0.8rem;
   }
 }
