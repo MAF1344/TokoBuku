@@ -261,7 +261,7 @@ body {
     align-items: center;
     text-align: center;
     position: absolute;
-    top: -220%;
+    top: -260%;
     left: 0;
     width: 100%;
     background-color: rgba(248, 249, 250, 0.8);
@@ -328,7 +328,7 @@ body {
   }
 
   .profile-details.active {
-    margin-top: 18rem;
+    margin-top: 20rem;
   }
 }
 

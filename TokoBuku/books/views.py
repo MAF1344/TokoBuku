@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Book, Author, Category
 from .forms import BookForm, AuthorForm, CategoryForm
-from .utils import admin_only
+from .utils import admin_only, staff_only
 
 
 """ -------------- Views for books -------------- """
@@ -28,6 +28,7 @@ def book_details(request, id):
 
 
 # Membuat buku baru
+@staff_only
 @login_required
 def book_create(request):
     if request.method == "POST":
@@ -42,6 +43,7 @@ def book_create(request):
 
 
 # Edit buku
+@staff_only
 @login_required
 def book_edit(request, id):
     book = get_object_or_404(Book, id=id)  # Mengambil buku berdasarkan ID
@@ -59,6 +61,7 @@ def book_edit(request, id):
 
 
 # Hapus buku
+@staff_only
 @login_required
 def book_delete(request, id):
     book = get_object_or_404(Book, id=id)
@@ -86,7 +89,7 @@ def book_delete(request, id):
 
 # Daftar author
 @login_required
-@admin_only
+@staff_only
 def author_list(request):
     authors = Author.objects.all()  # Mengambil semua author dari database
     return render(request, "authors/author-list.html", {'authors': authors})
@@ -94,7 +97,7 @@ def author_list(request):
 
 # Detail author
 @login_required
-@admin_only
+@staff_only
 def author_details(request, id):
     author = get_object_or_404(Author, id=id)
     return render(request, 'authors/author-details.html', {'author': author})
@@ -102,7 +105,7 @@ def author_details(request, id):
 
 # Membuat author baru
 @login_required
-@admin_only
+@staff_only
 def author_create(request):
     if request.method == "POST":
         form = AuthorForm(request.POST)  # Mengambil data dari form
@@ -117,7 +120,7 @@ def author_create(request):
 
 # Edit author
 @login_required
-@admin_only
+@staff_only
 def author_edit(request, id):
     # Mengambil author berdasarkan ID
     author = get_object_or_404(Author, id=id)
@@ -136,7 +139,7 @@ def author_edit(request, id):
 
 # Hapus author
 @login_required
-@admin_only
+@staff_only
 def author_delete(request, id):
     author = get_object_or_404(Author, id=id)
 
@@ -163,7 +166,7 @@ def author_delete(request, id):
 
 # Daftar kategori
 @login_required
-@admin_only
+@staff_only
 def category_list(request):
     categories = Category.objects.all()  # Mengambil semua kategori dari database
     return render(request, "categories/category-list.html", {'categories': categories})
@@ -171,7 +174,7 @@ def category_list(request):
 
 # Detail kategori
 @login_required
-@admin_only
+@staff_only
 def category_details(request, id):
     # Mengambil kategori berdasarkan ID
     category = get_object_or_404(Category, id=id)
@@ -180,7 +183,7 @@ def category_details(request, id):
 
 # Membuat kategori baru
 @login_required
-@admin_only
+@staff_only
 def category_create(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)  # Mengambil data dari form
@@ -195,7 +198,7 @@ def category_create(request):
 
 # Edit kategori
 @login_required
-@admin_only
+@staff_only
 def category_edit(request, id):
     # Mengambil kategori berdasarkan ID
     category = get_object_or_404(Category, id=id)
@@ -214,7 +217,7 @@ def category_edit(request, id):
 
 # Hapus kategori
 @login_required
-@admin_only
+@staff_only
 def category_delete(request, id):
     category = get_object_or_404(Category, id=id)
 

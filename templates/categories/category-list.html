@@ -60,7 +60,7 @@
               <a href="{% url 'category-details' category.id %}" class="category-title">{{ category.name }}</a>
             </span>
             <div class="edit-delete">
-              {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+              {% if user.is_authenticated and user.is_staff %}
               <a href="{% url 'category-edit' category.id %}" class="edit">Edit</a>
               <a href="{% url 'category-delete' category.id %}" class="delete">Delete</a>
               {% endif %}
@@ -68,7 +68,7 @@
           </li>
           {% endfor %}
         </ul>
-        {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+        {% if user.is_authenticated and user.is_staff %}
         <a href="{% url 'category-create' %}" class="create-category"><i class="fa-solid fa-plus"></i>Create New Book Category</a>
         {% endif %}
       </div>

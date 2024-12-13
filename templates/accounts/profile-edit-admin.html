@@ -27,8 +27,6 @@
         <h1>Edit Profile</h1>
         <form method="POST">
           {% csrf_token %} {{ form.as_p }}
-          <label for="is_staff">Staff:</label>
-          <input type="checkbox" id="is_staff" name="is_staff" value="true" {% if form.is_staff.value %} checked {% endif %} />
           <p>Current value of is_staff: {{ form.is_staff.value }}</p>
           <button type="submit" class="update-button">Update Profile</button>
           <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>

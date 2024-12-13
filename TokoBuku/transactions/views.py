@@ -39,15 +39,15 @@ def create_transaction(request, book_id):
 
 @login_required
 def transaction_list(request):
-    """List all transactions for the authenticated user or all transactions for admin."""
+    """List all transactions for the authenticated user or all transactions for superuser."""
     # Cek apakah pengguna terautentikasi
     if request.user.is_authenticated:
-        # Cek apakah nama pengguna adalah 'admin' (dalam berbagai format)
-        if request.user.username.lower() == 'admin':
-            # Jika pengguna adalah admin, ambil semua transaksi
+        # Cek apakah pengguna adalah superuser
+        if request.user.is_superuser:
+            # Jika pengguna adalah superuser, ambil semua transaksi
             transactions = Transaction.objects.select_related('book').all()
         else:
-            # Jika bukan admin, ambil transaksi yang hanya dimiliki oleh pengguna yang sedang login
+            # Jika bukan superuser, ambil transaksi yang hanya dimiliki oleh pengguna yang sedang login
             transactions = Transaction.objects.select_related(
                 'book').filter(user=request.user)
     else:

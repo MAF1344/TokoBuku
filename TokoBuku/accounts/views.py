@@ -106,15 +106,10 @@ def profile_details_admin(request, id):
 def profile_edit_admin(request, id):
     user = get_object_or_404(User, id=id)
     if request.method == "POST":
-        print("POST data:", request.POST)  # Debug POST data
         form = UserForm(request.POST, instance=user, request=request)
-        print("Form fields:", form.fields)  # Debug fields yang ada di form
         if form.is_valid():
-            print("Cleaned is_staff value:", form.cleaned_data.get('is_staff'))
             form.save()
             return redirect('profile-details-admin', id=id)
-        else:
-            print("Form errors:", form.errors)
     else:
         form = UserForm(instance=user, request=request)
     return render(request, "accounts/profile-edit-admin.html", {'form': form})

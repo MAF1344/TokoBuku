@@ -12,3 +12,14 @@ def admin_only(view_func):
         else:
             return render(request, 'common/forbidden.html')
     return _wrapped_view
+
+
+def staff_only(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        # Periksa apakah user adalah staff
+        if request.user.is_staff:
+            return view_func(request, *args, **kwargs)
+        else:
+            return render(request, 'common/forbidden.html')
+    return _wrapped_view

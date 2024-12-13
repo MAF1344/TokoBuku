@@ -3,7 +3,6 @@ from .models import User
 
 
 class UserForm(forms.ModelForm):
-    # Tambahkan field password
     password = forms.CharField(
         widget=forms.PasswordInput(),
         required=False,
@@ -16,7 +15,6 @@ class UserForm(forms.ModelForm):
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'Masukkan username'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Masukkan email'}),
-            # Tidak perlu mendefinisikan is_staff di sini jika sudah di template manual
         }
         help_texts = {
             'username': None,
@@ -46,5 +44,4 @@ class UserForm(forms.ModelForm):
         if is_staff and not (self.request and self.request.user.is_superuser):
             raise forms.ValidationError(
                 "Hanya superuser yang dapat mengatur status staff.")
-
         return is_staff

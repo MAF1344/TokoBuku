@@ -60,7 +60,7 @@
               <a href="{% url 'author-details' author.id %}" class="author-title">{{ author.name }}</a>
             </span>
             <div class="edit-delete">
-              {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+              {% if user.is_authenticated and user.is_staff %}
               <a href="{% url 'author-edit' author.id %}" class="edit">Edit</a>
               <a href="{% url 'author-delete' author.id %}" class="delete">Delete</a>
               {% endif %}

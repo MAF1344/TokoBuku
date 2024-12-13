@@ -29,7 +29,7 @@
           <div class="nav-links">
             <a href="{% url 'home-page' %}">Home</a>
             <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
-            {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+            {% if user.is_authenticated and user.is_staff %}
             <a href="{% url 'author-list' %}">Daftar Penulis</a>
             <a href="{% url 'category-list' %}">Daftar Kategori</a>
             {% endif %}
@@ -63,7 +63,7 @@
               <a href="{% url 'book-details' book.id %}" class="book-title">{{ book.title }}</a>
             </span>
             <div class="edit-delete">
-              {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+              {% if user.is_authenticated and user.is_staff %}
               <a href="{% url 'book-edit' book.id %}" class="edit">Edit</a>
               <a href="{% url 'book-delete' book.id %}" class="delete">Delete</a>
               {% endif %}
@@ -72,7 +72,7 @@
           </li>
           {% endfor %}
         </ul>
-        {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+        {% if user.is_authenticated and user.is_staff %}
         <a href="{% url 'book-create' %}" class="create-book"><i class="fa-solid fa-plus"></i>Create New Book</a>
         {% endif %}
       </div>
