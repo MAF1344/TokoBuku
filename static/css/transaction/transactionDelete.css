@@ -20,7 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -77,7 +79,10 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 3rem auto;
   max-width: 37.5rem;
-  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .transaction-delete .container {
@@ -163,33 +168,62 @@ body {
   }
 
   .transaction-delete {
-    width: 60%;
-    margin: 4rem auto;
-  }
-
-  .transaction-delete .container {
-    padding: 1.5rem;
-    max-width: 90%;
+    width: 90%;
+    margin: 10rem auto;
+    flex-grow: 1;
   }
 
   .transaction-delete h1 {
     font-size: 1.25rem;
   }
+
+  html,
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+
+  .transaction-delete {
+    width: 90%;
+    margin: 10rem auto;
+    flex-grow: 1;
+  }
+
+  .footer {
+    background-color: rgba(248, 249, 250, 0.8);
+    padding: 2rem 0;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media (max-width: 480px) {
+  html,
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+
+  .transaction-delete {
+    width: 90%;
+    margin: 10rem auto;
+    flex-grow: 1;
+  }
+
   .transaction-delete .container {
     padding: 1rem;
   }
 
-  .transaction-delete h1 {
-    font-size: 1.1rem;
-  }
-
-  .transaction-delete input[type='text'],
-  .transaction-delete input[type='password'],
-  .transaction-delete input[type='email'],
-  .transaction-delete button {
-    font-size: 0.8rem;
+  .footer {
+    background-color: rgba(248, 249, 250, 0.8);
+    padding: 2rem 0;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   }
 }

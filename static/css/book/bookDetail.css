@@ -219,6 +219,10 @@ body {
     text-align: center;
   }
 
+  .book-details p {
+    text-align: start;
+  }
+
   .nav-group {
     display: flex;
     flex-direction: column;

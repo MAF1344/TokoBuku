@@ -299,3 +299,10 @@ body {
     margin-top: 18rem;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .category-details {
+    width: 90%;
+    margin: 8rem auto;
+  }
+}

@@ -20,6 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -37,11 +40,6 @@ body {
 
 .navbar .container .logo {
   margin: auto;
-}
-
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  transition: background-color 0.5s;
 }
 
 .container {
@@ -71,6 +69,10 @@ body {
 
 .profile-edit {
   margin: 3rem 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-edit .container {
@@ -169,6 +171,16 @@ body {
   z-index: 1000;
 }
 
+.update-button {
+  margin-top: 1rem;
+}
+
+.helptext {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .navbar .container .logo {
     margin: auto;
@@ -190,6 +202,11 @@ body {
 }
 
 @media (max-width: 480px) {
+  .profile-edit {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   .profile-edit .container {
     padding: 1rem;
   }

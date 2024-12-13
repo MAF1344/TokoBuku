@@ -4,8 +4,8 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/account/profileEdit.css' %}" />
+    <title>Delete Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account/profileDelete.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
@@ -22,21 +22,20 @@
       </div>
     </nav>
 
-    <section id="profile-edit" class="profile-edit">
+    <section id="profile-delete" class="profile-delete">
       <div class="container">
-        <h1>Edit Profile</h1>
+        <h1>Delete Profile</h1>
+        <p>Are you sure you want to delete '{{ user.username }}' profile? Please confirm by entering your username.</p>
+
+        {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+        {% endif %}
+
         <form method="POST">
           {% csrf_token %}
           <label for="username">Username:</label>
-          <input type="text" id="username" name="username" value="{{ user.username }}" required />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" value="{{ user.email }}" required />
-
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" value="" required />
-
-          <button type="submit">Update Profile</button>
+          <input type="text" id="username" name="username" required />
+          <button type="submit">Delete Profile</button>
           <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
         </form>
       </div>

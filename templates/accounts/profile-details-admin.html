@@ -47,15 +47,16 @@
     <section id="profile-details" class="profile-details">
       <div class="container">
         <h1>Profile Details</h1>
-        <p>Username: {{ user.username }}</p>
-        <p>Email: {{ user.email }}</p>
-        <a href="{% url 'profile-edit' %}" class="edit">Edit Profile</a>
-        <a href="{% url 'profile-delete' %}" class="delete">Delete Profile</a>
+        <p>Username: {{ user_detail.username }}</p>
+        <p>Email: {{ user_detail.email }}</p>
+        <p>Role: {{ role }}</p>
+        <a href="{% url 'profile-edit-admin' user_detail.id %}" class="edit">Edit Profile</a>
+        <a href="{% url 'profile-delete-admin' user_detail.id %}" class="delete">Delete Profile</a>
         <form action="{% url 'logout' %}" method="post" style="display: inline" class="logout-form">
           {% csrf_token %}
           <button type="submit" class="logout-button">Logout</button>
-          <!-- Tombol Logout -->
         </form>
+        <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
       </div>
     </section>
 

@@ -20,6 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -33,6 +36,10 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.navbar .container .logo {
+  margin: auto;
 }
 
 .navbar.scrolled {
@@ -99,6 +106,7 @@ body {
 .author-edit input[type='text'],
 .author-edit input[type='email'],
 .author-edit input[type='number'],
+.author-edit input[type='date'],
 .author-edit textarea {
   width: 100%;
   padding: 0.75rem;
@@ -112,6 +120,7 @@ body {
 .author-edit input[type='text']:focus,
 .author-edit input[type='email']:focus,
 .author-edit input[type='number']:focus,
+.author-edit input[type='date']:focus,
 .author-edit textarea:focus {
   border-color: #007bff;
   outline: none;
@@ -179,6 +188,7 @@ body {
 
   .author-edit {
     margin: 5rem auto;
+    width: 80%;
   }
 
   .author-edit .container {
@@ -211,6 +221,7 @@ body {
 @media (max-width: 480px) {
   .author-edit .container {
     padding: 1rem;
+    max-width: 100%;
   }
 
   .author-edit h1 {

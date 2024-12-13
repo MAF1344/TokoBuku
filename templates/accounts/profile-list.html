@@ -4,39 +4,44 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Details</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/account/profileDetails.css' %}" />
+    <title>Toko Buku</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account/profileList.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
   </head>
   <body>
     <!-- navbar -->
     <nav class="navbar" id="navbar">
+      <!-- Tambahkan id="navbar" di sini -->
       <div class="container">
         <div class="logo">
+          <!-- image logo back to home page -->
           <a href="{% url 'home-page' %}">
             <img src="{% static 'images/logo.png' %}" alt="logo" />
           </a>
+
+          <!-- text logo back to home page -->
           <a href="{% url 'home-page' %}" class="title"> Toko Buku </a>
         </div>
+
         <div class="nav-group">
+          <!-- navlist -->
           <div class="nav-links">
             <a href="{% url 'home-page' %}">Home</a>
             <a href="{% url 'book-list' %}">Katalog Buku</a>
-            <a href="{% url 'transaction-list' %}">Daftar Transaksi</a>
-            {% if user.is_authenticated and user.is_superuser %}
-            <a href="{% url 'profile-list' %}">Daftar User</a>
-            {% endif %}
           </div>
+
+          <!-- profile -->
           <div class="profile">
             {% if user.is_authenticated %}
             <a href="{% url 'profile-details' %}"><i class="fa-solid fa-user"></i></a>
-            <a href="{% url 'profile-details' %}">{{ user.username }}</a>
+            <p>{{ user.username }}</p>
             {% else %}
             <a href="{% url 'login-page' %}"><i class="fa-solid fa-user"></i></a>
             {% endif %}
           </div>
         </div>
+
         <div class="nav-icon">
           <i class="fa-solid fa-bars bars"></i>
           <i class="fa-solid fa-xmark xmark"></i>
@@ -44,18 +49,23 @@
       </div>
     </nav>
 
-    <section id="profile-details" class="profile-details">
+    <section id="profile-list" class="profile-list">
       <div class="container">
-        <h1>Profile Details</h1>
-        <p>Username: {{ user.username }}</p>
-        <p>Email: {{ user.email }}</p>
-        <a href="{% url 'profile-edit' %}" class="edit">Edit Profile</a>
-        <a href="{% url 'profile-delete' %}" class="delete">Delete Profile</a>
-        <form action="{% url 'logout' %}" method="post" style="display: inline" class="logout-form">
-          {% csrf_token %}
-          <button type="submit" class="logout-button">Logout</button>
-          <!-- Tombol Logout -->
-        </form>
+        <h1>Daftar User</h1>
+        <ul>
+          {% for user in users %}
+          <li>
+            <span>
+              <a href="{% url 'profile-details-admin' user.id %}" class="profile-title">{{ user.username }}</a>
+            </span>
+            <div class="edit-delete">
+              <a href="{% url 'profile-edit-admin' user.id %}" class="edit">Edit</a>
+              <a href="{% url 'profile-delete-admin' user.id %}" class="delete">Delete</a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'register-page' %}" class="create-profile"><i class="fa-solid fa-plus"></i>Register New User</a>
       </div>
     </section>
 
@@ -67,14 +77,14 @@
       // Get the elements
       const barsIcon = document.querySelector('.bars');
       const xmarkIcon = document.querySelector('.xmark');
-      const profileDetailsSection = document.getElementById('profile-details');
+      const transactionDetailsSection = document.getElementById('profile-list');
       const navGroup = document.querySelector('.nav-group');
       const navIcon = document.querySelector('.nav-icon');
 
       // Add click event listener to the bars icon
       barsIcon.addEventListener('click', function () {
         // Toggle 'active' class on the specified elements
-        profileDetailsSection.classList.toggle('active');
+        transactionDetailsSection.classList.toggle('active');
         navGroup.classList.toggle('active');
         navIcon.classList.toggle('active');
       });
@@ -82,7 +92,7 @@
       // Add click event listener to the xmark icon
       xmarkIcon.addEventListener('click', function () {
         // Toggle 'active' class on the specified elements
-        profileDetailsSection.classList.toggle('active');
+        transactionDetailsSection.classList.toggle('active');
         navGroup.classList.toggle('active');
         navIcon.classList.toggle('active');
       });

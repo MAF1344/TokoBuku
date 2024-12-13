@@ -145,6 +145,7 @@ body {
 }
 
 .category-list .container .create-category {
+  text-align: center;
   margin: 0 auto;
   color: black;
   background-color: white;

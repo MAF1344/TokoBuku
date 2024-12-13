@@ -26,17 +26,11 @@
       <div class="container">
         <h1>Edit Profile</h1>
         <form method="POST">
-          {% csrf_token %}
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" value="{{ user.username }}" required />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" value="{{ user.email }}" required />
-
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" value="" required />
-
-          <button type="submit">Update Profile</button>
+          {% csrf_token %} {{ form.as_p }}
+          <label for="is_staff">Staff:</label>
+          <input type="checkbox" id="is_staff" name="is_staff" value="true" {% if form.is_staff.value %} checked {% endif %} />
+          <p>Current value of is_staff: {{ form.is_staff.value }}</p>
+          <button type="submit" class="update-button">Update Profile</button>
           <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
         </form>
       </div>

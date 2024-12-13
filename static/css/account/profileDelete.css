@@ -21,6 +21,8 @@ body {
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -36,9 +38,8 @@ body {
   z-index: 1000;
 }
 
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  transition: background-color 0.5s;
+.navbar .container .logo {
+  margin: auto;
 }
 
 .container {
@@ -68,6 +69,10 @@ body {
 
 .profile-delete {
   margin: 3rem 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-delete .container {
@@ -190,6 +195,11 @@ body {
 }
 
 @media (max-width: 480px) {
+  .profile-delete {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   .profile-delete .container {
     padding: 1rem;
   }

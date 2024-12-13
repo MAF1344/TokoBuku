@@ -20,6 +20,9 @@ body {
   background-position: center;
   background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar {
@@ -128,6 +131,10 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
   max-width: 35%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .transaction-details .container {
@@ -212,7 +219,7 @@ body {
 @media only screen and (max-width: 768px) {
   .transaction-details {
     max-width: 70%;
-    margin: 4rem auto;
+    margin: 6rem auto;
   }
   .nav-group {
     display: flex;
@@ -288,5 +295,29 @@ body {
 
   .transaction-details.active {
     margin-top: 18rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  html,
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+
+  .transaction-details {
+    max-width: 90%;
+    flex-grow: 1; /* Membuat .transaction-details fleksibel */
+    margin: 6rem auto;
+  }
+
+  .footer {
+    background-color: rgba(248, 249, 250, 0.8);
+    padding: 2rem 0;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   }
 }

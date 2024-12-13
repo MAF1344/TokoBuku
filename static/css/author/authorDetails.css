@@ -132,12 +132,16 @@ body {
   margin: 2rem auto;
   max-width: 37.5rem;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .author-details .container {
   display: flex;
   flex-direction: column;
   align-items: start;
+  margin: auto;
 }
 
 .author-details h1 {
@@ -150,6 +154,7 @@ body {
   font-size: 1.2rem;
   color: #555;
   margin-bottom: 1rem;
+  text-align: start;
 }
 
 .author-details .edit,

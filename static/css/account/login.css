@@ -172,8 +172,13 @@ body {
 }
 
 @media (max-width: 480px) {
+  .login {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   .login .container {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
 
   .login h1 {

@@ -35,9 +35,8 @@ body {
   z-index: 1000;
 }
 
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 1);
-  transition: background-color 0.5s;
+.navbar .container .logo {
+  margin: auto;
 }
 
 .container {
@@ -209,11 +208,21 @@ body {
 }
 
 @media (max-width: 480px) {
+  .book-edit {
+    margin: 3rem auto;
+    width: 80%;
+  }
+
   .book-edit .container {
-    padding: 1rem;
+    padding: 0.8rem;
+    max-width: 100%;
   }
 
   .book-edit h1 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+  }
+
+  .book-edit form {
+    width: 100%;
   }
 }
