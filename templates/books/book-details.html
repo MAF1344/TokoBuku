@@ -56,8 +56,10 @@
         <p>Publish year: {{ book.published_year }}</p>
         <p>Price: {{ formatted_price }}</p>
         <p>Synopsis: {{ book.synopsis }}</p>
+        {% if user.is_staff %}
         <a href="{% url 'book-edit' book.id %}" class="edit">Edit Book</a>
         <a href="{% url 'book-delete' book.id %}" class="delete">Delete Book</a>
+        {% endif %}
         <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
       </div>
     </section>

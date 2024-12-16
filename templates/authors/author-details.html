@@ -54,8 +54,10 @@
         <h1>{{ author.name }}</h1>
         <p>Tanggal Lahir: {{ author.birth_date }}</p>
         <p>Biografi: {{ author.bio }}</p>
+        {% if user.is_staff %}
         <a href="{% url 'author-edit' author.id %}" class="edit">Edit Author</a>
         <a href="{% url 'author-delete' author.id %}" class="delete">Delete Author</a>
+        {% endif %}
         <a href="javascript:history.back()" class="back-button"><i class="fa-solid fa-arrow-left"></i>Kembali</a>
       </div>
     </section>

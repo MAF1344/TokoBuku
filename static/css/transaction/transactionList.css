@@ -22,7 +22,7 @@ body {
   backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
 
 .navbar {
@@ -125,9 +125,12 @@ body {
 }
 
 .transaction-list {
+  flex-grow: 1; /* Allow the transaction list to grow and fill the space */
   padding: 2rem 0;
   margin: 2rem auto;
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .transaction-list .container {
