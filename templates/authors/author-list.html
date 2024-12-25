@@ -68,7 +68,7 @@
           </li>
           {% endfor %}
         </ul>
-        {% if user.is_authenticated and user.username == 'admin' or user.username == 'ADMIN' or user.username == 'Admin' %}
+        {% if user.is_authenticated and user.is_staff %}
         <a href="{% url 'author-create' %}" class="create-author"><i class="fa-solid fa-plus"></i>Create New Author</a>
         {% endif %}
       </div>
